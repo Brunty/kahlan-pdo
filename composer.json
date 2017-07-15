@@ -1,0 +1,22 @@
+{
+    "name": "brunty/kahlan-sqlite",
+    "description": "Provides functionality to reset an SQLite database and load fixtures within Kahlan",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "ext-sqlite3": "*",
+        "kahlan/kahlan": "^3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Brunt",
+            "email": "matt@mfyu.co.uk"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "loader.php"
+        ]
+    }
+}

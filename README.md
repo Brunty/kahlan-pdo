@@ -37,25 +37,25 @@ In `kahlan-config.php` setup the path to your db folder as follows:
 describe('SqliteThingRepository', function() {
 
     beforeEach(function() {
-        resetDB(); // reset our database before each test
+        \Brunty\Kahlan\resetDB(); // reset our database before each test
         $this->db = \Kahlan\box('db.sqlite');
     });
 
     it('gets all things from the database', function() {
-        load('things'); // load fixtures inside this test
+        \Brunty\Kahlan\load('things'); // load fixtures inside this test
 
         // do stuff
     });
 });
 ```
 
-Using the `resetDb()` function without a parameter will create an in-memory database, but if you wanted one on disk, you could easily pass the absolute path to it and it'll use that instead.
+Using the `\Brunty\Kahlan\resetDb()` function without a parameter will create an in-memory database, but if you wanted one on disk, you could easily pass the absolute path to it and it'll use that instead.
 
 With loading fixtures, you can then create a file within `/spec/db/fixtures` and call the name of that file (without the `.sql` extension) to load that fixture into the database.
 
 For example:
 
-`load('things');` would load the file: `/spec/db/fixtures/things.sql` into the database.
+`\Brunty\Kahlan\load('things');` would load the file: `/spec/db/fixtures/things.sql` into the database.
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 # Kahlan SQLite
 
-Provides functionality to
+Provides functionality to reset an SQLite database and load fixtures within the Kahlan testing framework.
 
 ## Requirements
 

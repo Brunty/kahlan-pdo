@@ -2,6 +2,7 @@
 describe('Kahlan SQLite Loader', function() {
     it('resets the database', function() {
         \Brunty\Kahlan\resetDB();
+        
         /** @var PDO $db */
         $db = \Kahlan\box('db.sqlite');
         $stmt = $db->query('SELECT * FROM Tests');

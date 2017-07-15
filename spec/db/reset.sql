@@ -1,0 +1,10 @@
+PRAGMA foreign_keys=OFF;
+ BEGIN TRANSACTION;
+ DROP TABLE IF EXISTS Tests;
+
+CREATE TABLE "Tests" (
+	"id" INTEGER PRIMARY KEY ASC NOT NULL UNIQUE,
+	"name" TEXT
+);
+PRAGMA writable_schema=OFF;
+COMMIT;

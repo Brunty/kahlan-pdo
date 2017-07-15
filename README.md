@@ -34,15 +34,18 @@ In `kahlan-config.php` setup the path to your db folder as follows:
 ```php
 <?php
 
+use function Brunty\Kahlan\resetDB;
+use function Brunty\Kahlan\load;
+
 describe('SqliteThingRepository', function() {
 
     beforeEach(function() {
-        \Brunty\Kahlan\resetDB(); // reset our database before each test
+        resetDB(); // reset our database before each test
         $this->db = \Kahlan\box('db.sqlite');
     });
 
     it('gets all things from the database', function() {
-        \Brunty\Kahlan\load('things'); // load fixtures inside this test
+        load('things'); // load fixtures inside this test
 
         // do stuff
     });

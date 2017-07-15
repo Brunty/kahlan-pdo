@@ -13,7 +13,7 @@ namespace Brunty\Kahlan;
  */
 function resetDB($db = ':memory:')
 {
-    \Kahlan\box('db.sqlite', new PDO("sqlite:{$db}"));
+    \Kahlan\box('db.sqlite', new \PDO("sqlite:{$db}"));
     $sql = file_get_contents(\Kahlan\box('db.path') . '/reset.sql');
     \Kahlan\box('db.sqlite')->exec($sql);
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Brunty\Kahlan;
+namespace Brunty\Kahlan\SQLite;
 
 /**
  * Resets the database that's in the Kahlan container under the `db.sqlite` key.

@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "files": [
-            "loader.php"
+            "src/SQLite/loader.php"
         ]
     }
 }

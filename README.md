@@ -34,8 +34,8 @@ In `kahlan-config.php` setup the path to your db folder as follows:
 ```php
 <?php
 
-use function Brunty\Kahlan\resetDB;
-use function Brunty\Kahlan\load;
+use function Brunty\Kahlan\SQLite\resetDB;
+use function Brunty\Kahlan\SQLite\load;
 
 describe('SqliteThingRepository', function() {
 

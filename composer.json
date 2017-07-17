@@ -1,10 +1,9 @@
 {
-    "name": "brunty/kahlan-sqlite",
-    "description": "Provides functionality to reset an SQLite database and load fixtures within Kahlan",
+    "name": "brunty/kahlan-pdo",
+    "description": "🗄 Provides functionality to work with PDO, reset a database and load fixtures within Kahlan",
     "type": "library",
     "require": {
         "php": ">=7.0",
-        "ext-sqlite3": "*",
         "kahlan/kahlan": "^3.0"
     },
     "license": "MIT",
@@ -16,7 +15,7 @@
     ],
     "autoload": {
         "files": [
-            "src/SQLite/loader.php"
+            "src/PDO/loader.php"
         ]
     }
 }

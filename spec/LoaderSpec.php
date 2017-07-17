@@ -1,23 +1,23 @@
 <?php
+use function \Brunty\Kahlan\PDO\resetDB;
+use function \Brunty\Kahlan\PDO\db;
+use function \Brunty\Kahlan\PDO\loadFixture;
+
 describe('Kahlan SQLite Loader', function() {
     it('resets the database', function() {
-        \Brunty\Kahlan\SQLite\resetDB();
+        resetDB();
 
-        /** @var PDO $db */
-        $db = \Kahlan\box('db.sqlite');
-        $stmt = $db->query('SELECT * FROM Tests');
+        $stmt = db()->query('SELECT * FROM Tests');
         $things = $stmt->fetchAll();
 
         expect($things)->toHaveLength(0);
     });
 
     it('loads fixtures into the database', function() {
-        \Brunty\Kahlan\SQLite\resetDB();
-        \Brunty\Kahlan\SQLite\load('things');
+        resetDB();
+        loadFixture('things');
 
-        /** @var PDO $db */
-        $db = \Kahlan\box('db.sqlite');
-        $stmt = $db->query('SELECT * FROM Tests');
+        $stmt = db()->query('SELECT * FROM Tests');
         $things = $stmt->fetchAll();
 
         expect($things)->toHaveLength(3);

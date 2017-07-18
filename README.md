@@ -1,5 +1,7 @@
 # Kahlan PDO
 
+[![Build Status](https://travis-ci.org/Brunty/kahlan-pdo.svg?branch=master)](https://travis-ci.org/Brunty/kahlan-pdo) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5b7b21e2-8627-4c6b-97d3-4a763023a33c/mini.png)](https://insight.sensiolabs.com/projects/5b7b21e2-8627-4c6b-97d3-4a763023a33c)
+
 🗄 Provides functionality to work with PDO, reset a database and load fixtures within Kahlan
 
 ## Requirements

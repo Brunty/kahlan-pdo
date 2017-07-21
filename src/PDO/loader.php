@@ -9,11 +9,15 @@ namespace Brunty\Kahlan\PDO;
  * When this function is called, it'll bind a new PDO instance into the Kahlan container under `db.pdo`
  * It will then set that DB to whatever is in the `reset.sql` file
  *
- * @param string $db
+ * @param string $dsn
+ * @param null   $username
+ * @param null   $password
+ *
+ * @internal param string $db
  */
-function resetDB($db = 'sqlite::memory:')
+function resetDB($dsn = 'sqlite::memory:', $username = null, $password = null)
 {
-    \Kahlan\box('db.pdo', new \PDO($db));
+    \Kahlan\box('db.pdo', new \PDO($dsn, $username, $password));
 
     include \Kahlan\box('db.path') . '/reset.php';
 }

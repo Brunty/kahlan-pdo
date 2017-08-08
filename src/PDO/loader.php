@@ -1,6 +1,7 @@
 <?php
 
 namespace Brunty\Kahlan\PDO;
+use function \Kahlan\box;
 
 /**
  * Resets the database that's in the Kahlan container under the `db.pdo` key.
@@ -15,11 +16,11 @@ namespace Brunty\Kahlan\PDO;
  *
  * @internal param string $db
  */
-function resetDB($dsn = 'sqlite::memory:', $username = null, $password = null)
+function reset($dsn = 'sqlite::memory:', $username = null, $password = null)
 {
-    \Kahlan\box('db.pdo', new \PDO($dsn, $username, $password));
+    box('db.pdo', new \PDO($dsn, $username, $password));
 
-    include rtrim(\Kahlan\box('db.path'), '/') . '/reset.php';
+    include rtrim(box('db.path'), '/') . '/reset.php';
 }
 
 /**
@@ -27,9 +28,9 @@ function resetDB($dsn = 'sqlite::memory:', $username = null, $password = null)
  *
  * @param string $fixture
  */
-function loadFixture(string $fixture)
+function fixture(string $fixture)
 {
-    include rtrim(\Kahlan\box('db.path'), '/') . "/fixtures/{$fixture}.php";
+    include rtrim(box('db.path'), '/') . "/fixtures/{$fixture}.php";
 }
 
 /**
@@ -39,7 +40,7 @@ function loadFixture(string $fixture)
  */
 function db(): \PDO
 {
-    return \Kahlan\box('db.pdo');
+    return box('db.pdo');
 }
 
 /**
@@ -47,7 +48,7 @@ function db(): \PDO
  *
  * @param string $filename
  */
-function loadSQL(string $filename)
+function sql(string $filename)
 {
-    \Brunty\Kahlan\PDO\db()->exec(file_get_contents($filename));
+    db()->exec(file_get_contents(rtrim(box('db.path.sql'), '/') . "/$filename.sql"));
 }

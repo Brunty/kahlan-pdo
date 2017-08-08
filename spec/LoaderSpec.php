@@ -1,11 +1,11 @@
 <?php
-use function \Brunty\Kahlan\PDO\resetDB;
+use function \Brunty\Kahlan\PDO\reset;
 use function \Brunty\Kahlan\PDO\db;
-use function \Brunty\Kahlan\PDO\loadFixture;
+use function \Brunty\Kahlan\PDO\fixture;
 
 describe('Kahlan SQLite Loader', function() {
     it('resets the database', function() {
-        resetDB();
+        reset();
 
         $stmt = db()->query('SELECT * FROM Tests');
         $things = $stmt->fetchAll();
@@ -14,8 +14,8 @@ describe('Kahlan SQLite Loader', function() {
     });
 
     it('loads fixtures into the database', function() {
-        resetDB();
-        loadFixture('things');
+        reset();
+        fixture('things');
 
         $stmt = db()->query('SELECT * FROM Tests');
         $things = $stmt->fetchAll();

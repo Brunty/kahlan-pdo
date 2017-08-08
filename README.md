@@ -18,16 +18,18 @@
 **Folders:**
 
 1. Create a folder to store your database related files (`/spec/db` is suggested)
-2. Within the folder where your database related files will be stored created a file `reset.php` which will be the file you'll use to reset your DB whenever you call the function to do so.
-3. Within the folder where your database related files will be stored, created a `fixtures` folder
-4. Create fixtures as you need for your tests in the `fixtures` folder.
+2. Create a folder to store your SQL files to load into the database (`/spec/db/sql` is suggested)
+3. Within the folder where your database related files will be stored created a file `reset.php` which will be the file you'll use to reset your DB whenever you call the function to do so.
+4. Within the folder where your database related files will be stored, created a `fixtures` folder
+5. Create fixtures as you need for your tests in the `fixtures` folder.
 
 **Config:**
 
-In `kahlan-config.php` setup the path to your db folder as follows:
+In `kahlan-config.php` setup the path to your db folder and if you wish to use the `\Brunty\Kahlan\PDO\sql()` helper function, add the path to a directory that will hold SQL files as follows:
 
 ```php
 \Kahlan\box('db.path', __DIR__ . '/spec/db');
+\Kahlan\box('db.path.sql', __DIR__ . '/spec/db/sql');
 ```
 
 ## Usage
@@ -35,28 +37,28 @@ In `kahlan-config.php` setup the path to your db folder as follows:
 ```php
 <?php
 
-use function Brunty\Kahlan\PDO\resetDB;
-use function Brunty\Kahlan\PDO\loadFixture;
+use function Brunty\Kahlan\PDO\reset;
+use function Brunty\Kahlan\PDO\fixture;
 use function Brunty\Kahlan\PDO\db;
 
 describe('SqliteThingRepository', function() {
 
     beforeEach(function() {
-        resetDB(); // reset our database before each test
+        reset(); // reset our database before each test
     });
 
     it('gets all things from the database', function() {
-        loadFixture('things'); // load fixtures inside this test
+        fixture('things'); // load fixtures inside this test
 
         // do stuff
         $stmt = db()->query('SELECT * FROM Things');
         $things = $stmt->fetchAll();
-        
+        // run assertions
     });
 });
 ```
 
-Using the `\Brunty\Kahlan\PDO\resetDb()` function without a parameter will create an in-memory database in SQLite, but you can pass the DSN to it and it'll use that instead.
+Using the `\Brunty\Kahlan\PDO\reset()` function without a parameter will create an in-memory database in SQLite, but you can pass the DSN, username and password to it and it'll use those instead.
 
 With loading fixtures, you can then create a file within `/spec/db/fixtures` and call the name of that file (without the `.php` extension) to do whatever you might need to load data into the database.
 
@@ -70,12 +72,12 @@ In `/spec/db/fixtures/things.php`:
 ```php
 <?php
 
-\Brunty\Kahlan\PDO\loadSQL(__DIR__ . '/../sql/things.sql');
+\Brunty\Kahlan\PDO\sql('things');
 ```
 
 The helper function `\Brunty\Kahlan\PDO\db()` returns the instance of PDO that is in the Kahlan box.
 
-The helper function `\Brunty\Kahlan\PDO\loadSQL()` loads SQL from the file given into the PDO instance in the Kahlan box.
+The helper function `\Brunty\Kahlan\PDO\sql()` loads SQL from the file given (in the `\Kahlan\box('db.path.sql')` directory, without the `.sql` extension) into the PDO instance in the Kahlan box.
 
 ## Contributing
 

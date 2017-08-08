@@ -7,7 +7,7 @@ namespace Brunty\Kahlan\PDO;
  *
  * To use this, specify a file called `reset.php` within the `/spec/db` folder of your project
  * When this function is called, it'll bind a new PDO instance into the Kahlan container under `db.pdo`
- * It will then set that DB to whatever is in the `reset.sql` file
+ * It will then run whatever is in the `reset.php` file
  *
  * @param string $dsn
  * @param null $username

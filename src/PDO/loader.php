@@ -1,6 +1,7 @@
 <?php
 
 namespace Brunty\Kahlan\PDO;
+
 use function \Kahlan\box;
 
 /**
@@ -11,12 +12,10 @@ use function \Kahlan\box;
  * It will then run whatever is in the `reset.php` file
  *
  * @param string $dsn
- * @param null $username
- * @param null $password
- *
- * @internal param string $db
+ * @param string $username
+ * @param string $password
  */
-function reset($dsn = 'sqlite::memory:', $username = null, $password = null)
+function reset(string $dsn = 'sqlite::memory:', string $username = null, string $password = null)
 {
     box('db.pdo', new \PDO($dsn, $username, $password));
 
@@ -34,7 +33,7 @@ function fixture(string $fixture)
 }
 
 /**
- * Gets the instance of PDO that is in the Kahlan box
+ * Gets the instance of PDO that's in the Kahlan box
  *
  * @return \PDO
  */
